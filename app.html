@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kismmat AI - Unveiling Your Destiny</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 50%, #2d1b4e 100%);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background particles */
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-100px) translateX(50px) scale(1.2); opacity: 0.8; }
+            50% { transform: translateY(-50px) translateX(-50px) scale(0.8); opacity: 0.4; }
+            75% { transform: translateY(-150px) translateX(100px) scale(1.1); opacity: 0.7; }
+        }
+
+        /* Mystical glow effect */
+        .glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.3) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.3); opacity: 0.8; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Logo and Header */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1.5s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .logo {
+            font-size: 4.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #ffd700, #ff69b4, #00d4ff, #ffd700);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+            animation: gradientShift 5s ease infinite;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            color: #d4af37;
+            font-style: italic;
+            animation: fadeIn 2s ease-out 0.5s both;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #8a2be2, #ff1493);
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 30px 0;
+            animation: pulse 2s infinite, fadeIn 1.5s ease-out;
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Content Section */
+        .content-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px;
+            margin: 40px 0;
+            animation: fadeInUp 1.5s ease-out;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .content-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(138, 43, 226, 0.4);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .content-card h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #ffd700, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .content-card p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(255, 20, 147, 0.2));
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .service-item:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 10px 40px rgba(138, 43, 226, 0.5);
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(255, 20, 147, 0.3));
+        }
+
+        .service-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            animation: rotate 4s infinite linear;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .service-item:hover .service-icon {
+            animation: bounce 0.6s ease;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .service-item h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        /* Slogans Section */
+        .slogans {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .slogan {
+            font-size: 1.8em;
+            font-style: italic;
+            color: #d4af37;
+            margin: 20px 0;
+            animation: fadeIn 2s ease-out;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .slogan:hover {
+            transform: scale(1.05);
+            color: #ffd700;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, rgba(138, 43, 226, 0.2), rgba(45, 27, 78, 0.3));
+            border-radius: 20px;
+            padding: 50px;
+            margin: 60px 0;
+            text-align: center;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            animation: fadeInUp 2s ease-out;
+        }
+
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffd700, #ff69b4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-item {
+            display: inline-block;
+            margin: 20px 30px;
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.1);
+        }
+
+        .contact-item a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #ffd700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        .contact-icon {
+            font-size: 1.5em;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Social Links */
+        .social-section {
+            text-align: center;
+            margin: 40px 0;
+            padding: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            display: inline-block;
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            font-size: 1.1em;
+            color: #d4af37;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .social-link:hover {
+            background: linear-gradient(135deg, #8a2be2, #ff1493);
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5);
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9em;
+        }
+
+        /* Responsive */
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50px;
+            font-size: 1.1em;
+            color: #fff;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus {
+            border-color: #ffd700;
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #8a2be2, #ff1493);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 10px;
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(138, 43, 226, 0.6);
+            background: linear-gradient(135deg, #ff1493, #8a2be2);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-2px);
+        }
+
+        .form-note {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #d4af37;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 3em;
+            }
+            
+            .tagline {
+                font-size: 1.2em;
+            }
+            
+            .content-card {
+                padding: 30px;
+            }
+            
+            .content-card h2 {
+                font-size: 2em;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background particles and glow effects -->
+    <div class="glow" style="top: 10%; left: 10%;"></div>
+    <div class="glow" style="bottom: 10%; right: 10%; animation-delay: 2s;"></div>
+
+    <div class="container">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="logo">✨ Kismmat AI ✨</div>
+            <div class="tagline">Unveiling Your Cosmic Destiny</div>
+            <div class="coming-soon-badge">Coming Soon</div>
+        </div>
+
+        <!-- About Section -->
+        <div class="content-card">
+            <h2>🌟 Who We Are</h2>
+            <p>Welcome to Kismmat AI, where ancient wisdom meets cutting-edge technology. We are pioneers in merging the mystical art of numerology with artificial intelligence to illuminate your life's path.</p>
+            <p>Our platform harnesses the divine power of numbers to decode the secrets hidden in your name, birth date, and life events, offering you profound insights into your destiny.</p>
+        </div>
+
+        <!-- What We Do Section -->
+        <div class="content-card">
+            <h2>🔮 What We Do</h2>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">🎯</div>
+                    <h3>Life Path Analysis</h3>
+                    <p>Discover your soul's purpose and life mission</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">💫</div>
+                    <h3>Name Numerology</h3>
+                    <p>Unlock the power hidden in your name</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🌙</div>
+                    <h3>Destiny Forecasting</h3>
+                    <p>Navigate future opportunities with clarity</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">⭐</div>
+                    <h3>Compatibility Reading</h3>
+                    <p>Understand your relationships deeply</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slogans Section -->
+        <div class="slogans">
+            <div class="slogan">"Your Numbers, Your Destiny"</div>
+            <div class="slogan">"AI-Powered Wisdom from the Universe"</div>
+            <div class="slogan">"Decode Your Life's Sacred Blueprint"</div>
+        </div>
+
+        <!-- Pre-Registration Form -->
+        <div class="content-card" style="background: linear-gradient(135deg, rgba(138, 43, 226, 0.15), rgba(255, 20, 147, 0.15));">
+            <h2>🎁 Pre-Register Now & Get Exclusive Benefits!</h2>
+            <p style="font-size: 1.3em; color: #ffd700; margin-bottom: 30px; text-align: center;">
+                Be among the first to unlock your cosmic destiny! Pre-register now and receive a <strong>SPECIAL DISCOUNT</strong> on your first numerology report when we launch!
+            </p>
+            
+            <form id="preRegisterForm" style="max-width: 600px; margin: 0 auto;">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Your Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="birthdate" placeholder="Your Birth Date" required>
+                </div>
+                <button type="submit" class="submit-btn">
+                    ✨ Secure My Spot & Benefits ✨
+                </button>
+                <p class="form-note">
+                    🌟 We'll contact you personally after launch with your exclusive benefits!
+                </p>
+            </form>
+            
+            <div id="successMessage" style="display: none; margin-top: 30px; padding: 20px; background: rgba(0, 255, 136, 0.2); border-radius: 15px; text-align: center;">
+                <h3 style="color: #00ff88; margin-bottom: 10px;">🎉 Welcome to the Kismmat AI Family!</h3>
+                <p style="color: #fff;">Thank you for pre-registering! We'll reach out to you with exclusive benefits when we launch.</p>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>📞 Connect With Us</h2>
+            <div class="contact-item">
+                <span class="contact-icon">📧</span>
+                <a href="mailto:kismmatai@gmail.com">kismmatai@gmail.com</a>
+            </div>
+            <div class="contact-item">
+                <span class="contact-icon">📱</span>
+                <a href="tel:+919152058111">+91 9152058111</a>
+            </div>
+        </div>
+
+        <!-- Social Section -->
+        <div class="social-section">
+            <h2 style="color: #d4af37; margin-bottom: 20px;">🌐 Follow Us</h2>
+            <div class="social-links">
+                <a href="#" class="social-link">Instagram - Coming Soon</a>
+                <a href="#" class="social-link">Facebook - Coming Soon</a>
+                <a href="#" class="social-link">Twitter - Coming Soon</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Kismmat AI. All Rights Reserved. | Empowering Lives Through Cosmic Intelligence</p>
+        </footer>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const colors = ['#ffd700', '#ff69b4', '#00d4ff', '#8a2be2'];
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 6 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                document.body.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        // Add smooth scroll animation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const glows = document.querySelectorAll('.glow');
+            glows.forEach((glow, index) => {
+                glow.style.transform = `translateY(${scrolled * (index + 1) * 0.1}px)`;
+            });
+        });
+
+        // Pre-registration form handling
+        document.getElementById('preRegisterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const birthdate = document.getElementById('birthdate').value;
+            
+            // Store data in memory (in a real application, this would be sent to a server)
+            const registrationData = {
+                name: name,
+                email: email,
+                phone: phone,
+                birthdate: birthdate,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('Pre-registration data:', registrationData);
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            document.getElementById('preRegisterForm').style.display = 'none';
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+    </script>
+</body>
+</html>
